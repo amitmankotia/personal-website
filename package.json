@@ -1,7 +1,8 @@
 {
-  "name": "personal-website",
+  "name": "Amit_Kumar",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://amitmankotia.github.io/Amit_Kumar",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
