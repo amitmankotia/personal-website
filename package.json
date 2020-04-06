@@ -2,14 +2,15 @@
   "name": "Amit_Kumar",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://amitmankotia.github.io/Amit_Kumar",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.1"
+    "react-scripts": "3.3.1",
+    "styled-components": "^4.3.2",
+    "typer-js": "^5.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,5 +32,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "ftp-deploy": "^2.3.6",
+    "gh-pages": "^2.2.0"
   }
 }
