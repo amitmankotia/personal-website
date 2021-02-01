@@ -1,32 +1,23 @@
-import React from "react";
+import React, { Componentm, useState, useEffect } from "react";
 import { StyledWork } from "./styles";
 
-function Work(props) {
+const Work = () => {
     return (
-        <StyledWork {...props}>
-            <div id="work" className="div one-page-div">
-                <div className="container">
-                    <div className="div-title">
-                        <h2>My Portfolio</h2>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-xs-12">
-                            <ul id="work-list" className="text-center">
-                                <li className="main-color">
-                                    <a href="#" className="filter  effect">all</a>
-                                </li>
-                                <li className="main-color">
-                                    <a href="#" className="filter effect" data-filter=".web">web</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <StyledWork>
+            <div id="work">
+                <h2>My Portfolio</h2>
+                <ul id="work-list">
+                    <li>
+                        <a href="#" >all</a>
+                    </li>
+                    <li>
+                        <a href="#">web</a>
+                    </li>
+                </ul>
             </div>
 
         </StyledWork>
     );
-}
+};
 
 export default Work;

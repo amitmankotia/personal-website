@@ -1,49 +1,45 @@
 import styled from "styled-components";
-export const StyledHeader = styled.div.attrs(({ top }) => {
-  return top>=60 ? {
-  style: {
-    backgroundColor: '#fff',
-    padding: '6px 0 !important',
-    borderBottom: '1px solid #f0f0f0',
-    color: '#333',
-    
-  }
-}: {
-  style:{
-    color: '#ddd',
-    backgroundColor: 'transparent'
-  }
-}})
-`
-  width: 100vw;
-  height: 60px;
+export const StyledHeader = styled.div`
+a{
   display: flex;
-  justify-content: space-between;
+}
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100vw;
+min-height: 6vh;
+box-sizing: border-box;
+background-color: #ffffff;
+transition: top .3s ease-in;
   z-index: 20;
   position: fixed;
-  padding: 20px;
+  padding: 5px 20px;
   box-sizing: border-box;
   img{
     height:  50px;
     width: 50px;
-    top: -15px !important;
     position: relative;
 
   }
-
+  a{
+    flex:1;
+  }
   nav{
-    width: 400px;
+    flex:2;
     display: flex;
-    justify-content: flex-end;
   }
   & ul{
-    width: 100%;
+    width: 450px;
     display: flex;
     justify-content: space-evenly;
     li{
       position: relative;
       font-size: 13px;
       font-weight: 700;
+      opacity: 0.5;
+      :hover, :focus{
+        opacity: 1;
+      }
     }
   }
 `;

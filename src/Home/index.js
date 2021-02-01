@@ -1,35 +1,30 @@
-import React, { Component } from "react";
+import React, { Componentm, useState, useEffect } from "react";
 import { StyledHome } from "./styles";
 import typer from 'typer-js';
-class Home extends Component {
-    constructor() {
-        super();
-        this.state = {
-            titleInfo : ''
-        }
-    }
-    componentDidMount() {
+import loadingImage from '../images/loading.gif';
+import errorImage from '../images/error.png';
+
+const Home = ({
+    profileImagePath,
+    bgImage
+}) => {
+    useEffect(() => {
         const element = document.querySelector('.title');
         typer(element)
-            .line("I'M A WEB DEVELOPER")
             .line("I CREATE AWESOME WEB STUFF");
-    }
-    render() {
-        return <StyledHome {...this.props}>
-            <div id="home" className="home-1 parallax one-page-div">
-                <div className="page-table">
-                    <div className="table-cell text-center">
-                        <div className="avatar-hero">
-                            <img src={require("../images/profile.jpg")} alt="avatar-hero" />
-                        </div>
-                        <h1><span>Hi</span>, I'm Amit Mankotia</h1>
-                        <h2 className="title"></h2>
-                    </div>
-                </div>
-                <a href="#about" className="scroll home-s-btn hor-center"><span className="dot center"></span></a>
-            </div>
-        </StyledHome>
-    }
+    }, []);
+    return <StyledHome id="home" bgImage={bgImage} >
+        <div>
+            <img
+                placeholder={loadingImage}
+                src={profileImagePath}
+                error={errorImage}
+                alt="profile-pic"
+            />
+        </div>
+        <h1 className="into"><span>Hello,</span> I'm Amit Mankotia. <h2 className="title"></h2></h1>
+
+    </StyledHome>;
 };
 
 export default Home;

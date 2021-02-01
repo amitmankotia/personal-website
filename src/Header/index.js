@@ -1,27 +1,49 @@
-import React from "react";
+import React, { Componentm, useState, useEffect } from "react";
 import { StyledHeader } from "./styles";
-import logo from '../images/logo.png'
+import '../../src/index.css';
 
-function Header(props) {
-    // const {top} = props;
-    // if ( top >= 100 ) {
-    //     this.addClass("nav-sticky");
-  
-    //   } else {
-    //     this.removeClass("nav-sticky");
-    //   }
-    return (
-        <StyledHeader {...props}>
-             <img src={logo} className="App-logo" alt="logo" />
-            <nav>
-                <ul><li><a href="#home" className="scroll effect active" data-speed="800">HOME</a></li>
-                    <li><a href="#about" className="scroll effect" data-speed="1000">ABOUT</a></li>
-                    <li><a href="#work" className="scroll effect" data-speed="1400">WORK</a></li>
-                    <li><a href="#contact" className="scroll effect" data-speed="1700">CONTACT</a></li>
-                </ul>
-            </nav>
-        </StyledHeader>
-    );
-}
+const Header = ({
+    logo
+}) => {
+    const [prevScrollpos, setPrevScrollpos] = React.useState(window.pageYOffset);
+    // const [selectedpage, setSelectedpage] = useState(initialState);
+    const handleScroll = () => {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("navbar").style.top = "0";
+        } else {
+            document.getElementById("navbar").style.top = "-68px";
+        }
+        setPrevScrollpos(currentScrollPos);
+    };
+    const debouce = (fn, duration) => {
+        let timeout;
+        return () => {
+            if (timeout) {
+                clearTimeout(timeout);
+            };
+            timeout = setTimeout(fn, duration);
+        };
+    };
+    const onTabClick = (e) => {
 
-export default Header;
+    };
+    const debouncedScroll = debouce(handleScroll, 50);
+
+    useEffect(() => {
+        window.addEventListener('scroll', debouncedScroll);
+        return () => (window.removeEventListener('scroll', debouncedScroll));
+    });
+    return <StyledHeader id="navbar" >
+        <a href="#home"> <img src={logo} className="App-logo" alt="logo" /></a>
+        <nav onClick={onTabClick}>
+            <ul><li className={"active"}><a href="#home" >HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#work">WORK</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </StyledHeader>;
+};
+const areEqual = (prevProps, nextProps) => true;
+export default React.memo(Header, areEqual);
